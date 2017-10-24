@@ -70,7 +70,23 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 				return rand = warna[Math.floor(Math.random() * warna.length)];
 			});
 			var co = document.getElementById('bingo');
+			function setbingo(thisbingo) {
+				var currSquare = "square" + thisbingo;
+				var colPlace = new Array(0,0,0,0,0,1,1,1,1,1,2,2,2,2,3,3,3,3,3,4,4,4,4,4);
+				var colBasis = colPlace[thisbingo] * 15;
+				var newNum;
+
+				do {
+					newNum = colBasis + getNewNum() + 1;
+				}
+				while (usedNums[newNum]);
+			    usedNums[newNum] = true;
+			    document.getElementById(currSquare).innerHTML = newNum;
+			    document.getElementById(currSquare).className = "";
+			    document.getElementById(currSquare).onmousedown = toggleColor;
+			}
 	    });
+
       </script>
 
 </body>
